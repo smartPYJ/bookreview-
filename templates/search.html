@@ -1,0 +1,41 @@
+{% extends "layout.html" %}
+
+{% block title %}
+Search
+
+{% endblock %}
+
+{% block body %}
+<h1>Search</h1>
+
+Welcome {{user}} to my book search site .
+<div class=" text-right">
+    <a href="{{url_for('login')}}" class="btn btn-primary">logout </a>
+</div>
+<div class="container text-right ">
+    
+    <form action="{{ url_for('searchbooks') }}" method="post">
+
+        <input style="width:50% ;" type="search" class="form-control" name="search" placeholder="Book search">   <button class="btn btn-secondary"> Search</button>
+    </form>
+ 
+   
+</div>
+
+
+<div class="w-100 p-5">
+
+    {{message}}
+    <ul>
+        {% for book  in all_books %}
+        <li>
+            <a href="#">
+
+                {{ book.isbn }} {{ book.title}} {{book.author}} {{book.year}}
+            </a>
+        </li>
+        {% endfor %}
+    </ul>
+</div>
+
+{% endblock %}

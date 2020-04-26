@@ -1,0 +1,30 @@
+{% extends "layout.html" %}
+
+{% block title %}
+
+Home
+
+{% endblock %}
+
+{% block body %}
+
+<h1 class="block">Welcome to Smart Book Review</h1>
+<dir class="container">
+    <div class="text-right">
+        <a href="{{url_for('login')}}" class="btn btn-primary">Login </a>
+        <a href="{{url_for('register')}}" class="btn btn-primary">Register </a>
+    </div>
+
+
+</dir>
+<div class="container align-items-center">
+    <div class="justify-content-center align-items-center">
+
+        <img src="https://d1t35hkz8sx2bl.cloudfront.net/api/file/Hk8rnr5QeCsmVI0P5YKF?cache=true" sizes="50%"
+            height="100%" width="100%">
+    </div>
+
+</div>
+
+
+{% endblock %}

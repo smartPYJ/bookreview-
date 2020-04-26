@@ -1,0 +1,14 @@
+{% extends "layout.html" %}
+
+{% block title %}
+    Success!
+{% endblock %}
+
+{% block body %}
+    <h1>Success!</h1>
+
+    {{name}} {{last}}, Welcome to my book review site .
+    <div class=" container form-group justify-content-left align-items-left">
+        <a href="{{url_for('login')}}" class="btn btn-primary">Login </a>
+    </div>
+{% endblock %}
