@@ -8,35 +8,61 @@ Search
 {% block body %}
 <h1>Search</h1>
 
-Welcome {{user}} to my book search site .
-<div class=" text-right">
-    <a href="{{url_for('login')}}" class="btn btn-primary">logout </a>
+Welcome {{user}} to my book Review site .
+<p class="text-right">Search for a book you would like to review </p>
+
+<div class="container">
+    <nav class="navbar navbar-light" style="background-color: #e2e6f1;">
+        <a href="{{url_for('login')}}" class="btn btn-primary">logout </a>
+        <form class="form-inline" action="{{ url_for('searchbooks') }}" method="post">
+            <input class="form-control" name="search" type="search" placeholder="Search" aria-label="Search">
+            <button class="btn btn-outline-success" type="submit">Search</button>
+        </form>
+    </nav>
+{{message}}
 </div>
-<div class="container text-right ">
 
-    <form action="{{ url_for('searchbooks') }}" method="post">
-
-        <input style="width:50% ;" type="search" class="form-control" name="search" placeholder="Book search"> <button
-            class="btn btn-secondary"> Search</button>
-    </form>
-
-
-</div>
-
-
-<div class="w-100 p-5">
-
-    {{message}}
-    <ul>
+<div class=" container ">
+<table class="table">
+    <thead class="thead-dark">
+        <tr>
+            <th scope="col">#</th>
+            <th scope="col">Isbn</th>
+            <th scope="col">Title</th>
+            <th scope="col">Author</th>
+            <th scope="col">Year</th>
+        </tr>
+    </thead>
+    <tbody>
         {% for book  in all_books %}
-        <li class="list-group-item">
-            <a href="#">
+        <tr>
+            <th scope="row">{{book.id}}</th>
+            <td>
+                <a href="#">
+                    {{ book.isbn }}
+                </a>
+            </td>
+            <td>
+                <a href="#">
+                    {{ book.title}}
+                </a>
+            </td>
+            <td>
+                <a href="#">
+                    {{book.author}}
+                </a>
+            </td>
+            <td>
+                <a href="#">
+                    {{book.year}}
+                </a>
+            </td>
 
-                {{ book.isbn }} {{ book.title}} {{book.author}} {{book.year}}
-            </a>
-        </li>
+        </tr>
+
         {% endfor %}
-    </ul>
+
+    </tbody>
 </div>
 
-{% endblock %}
+    {% endblock %}
