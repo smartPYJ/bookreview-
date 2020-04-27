@@ -13,13 +13,14 @@ Welcome {{user}} to my book search site .
     <a href="{{url_for('login')}}" class="btn btn-primary">logout </a>
 </div>
 <div class="container text-right ">
-    
+
     <form action="{{ url_for('searchbooks') }}" method="post">
 
-        <input style="width:50% ;" type="search" class="form-control" name="search" placeholder="Book search">   <button class="btn btn-secondary"> Search</button>
+        <input style="width:50% ;" type="search" class="form-control" name="search" placeholder="Book search"> <button
+            class="btn btn-secondary"> Search</button>
     </form>
- 
-   
+
+
 </div>
 
 
@@ -28,7 +29,7 @@ Welcome {{user}} to my book search site .
     {{message}}
     <ul>
         {% for book  in all_books %}
-        <li>
+        <li class="list-group-item">
             <a href="#">
 
                 {{ book.isbn }} {{ book.title}} {{book.author}} {{book.year}}

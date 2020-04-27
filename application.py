@@ -70,22 +70,20 @@ def registeruser():
     return render_template("success.html", name=firstname, last=lastname)
 
 
-@app.route("/search")
-def search():
-    return render_template("search.html")
 
 
 @app.route("/search", methods=["POST"])
 def searchbooks(): 
     keyword = request.form.get("search")
-    while True:
-       
-        find = str("%"+str(keyword)+"%")
-        """return search for books ."""
-        if str(keyword) == "":
-            return render_template("search.html", message="No Match found")
-        else:
-            all_books = db.execute("SELECT * FROM books WHERE isbn LIKE :word OR  title LIKE  :word OR author LIKE :word", {"word": find}).fetchall()
+   
+    find = str("%"+str(keyword)+"%")
+    """return search for books ."""
+    if str(keyword) == "":
+        return render_template("search.html", message="Search field empty")
+    elif str(keyword) != "":
+        all_books = db.execute("SELECT * FROM books WHERE isbn LIKE :word OR  title LIKE  :word OR author LIKE :word", {"word": find}).fetchall()
+        if len(all_books)>0:
             return render_template("search.html", all_books=all_books)
-          
+        else:
+            return render_template("search.html", message=" Oop's.. sorry, No match found !!")
        
