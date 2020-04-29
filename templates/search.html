@@ -8,61 +8,61 @@ Search
 {% block body %}
 <h1>Search</h1>
 
-Welcome {{user}} to my book Review site .
+
 <p class="text-right">Search for a book you would like to review </p>
 
 <div class="container">
-    <nav class="navbar navbar-light" style="background-color: #e2e6f1;">
-        <a href="{{url_for('login')}}" class="btn btn-primary">logout </a>
+    <nav class="navbar navbar-light" style="background-color: #ece3dec9;">
+        <a href="{{url_for('index')}}" class="btn btn-primary">logout </a>
         <form class="form-inline" action="{{ url_for('searchbooks') }}" method="post">
             <input class="form-control" name="search" type="search" placeholder="Search" aria-label="Search">
             <button class="btn btn-outline-success" type="submit">Search</button>
         </form>
     </nav>
-{{message}}
+    {{message}}
 </div>
 
 <div class=" container ">
-<table class="table">
-    <thead class="thead-dark">
-        <tr>
-            <th scope="col">#</th>
-            <th scope="col">Isbn</th>
-            <th scope="col">Title</th>
-            <th scope="col">Author</th>
-            <th scope="col">Year</th>
-        </tr>
-    </thead>
-    <tbody>
-        {% for book  in all_books %}
-        <tr>
-            <th scope="row">{{book.id}}</th>
-            <td>
-                <a href="#">
-                    {{ book.isbn }}
-                </a>
-            </td>
-            <td>
-                <a href="#">
-                    {{ book.title}}
-                </a>
-            </td>
-            <td>
-                <a href="#">
-                    {{book.author}}
-                </a>
-            </td>
-            <td>
-                <a href="#">
-                    {{book.year}}
-                </a>
-            </td>
+    <table class="table">
+        <thead class="thead-dark">
+            <tr>
+                <th scope="col">#</th>
+                <th scope="col">Isbn</th>
+                <th scope="col">Title</th>
+                <th scope="col">Author</th>
+                <th scope="col">Year</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for book  in all_books %}
+            <tr>
+                <th scope="row">{{book.book_id}}</th>
+                <td>
+                    <a href="{{ url_for('book', book_id=book.book_id) }}">
+                        {{ book.isbn }}
+                    </a>
+                </td>
+                <td>
+                    <a href="{{ url_for('book', book_id=book.book_id) }}">
+                        {{ book.title}}
+                    </a>
+                </td>
+                <td>
+                    <a href="{{ url_for('book', book_id=book.book_id) }}">
+                        {{book.author}}
+                    </a>
+                </td>
+                <td>
+                    <a href="{{ url_for('book', book_id=book.book_id) }}">
+                        {{book.year}}
+                    </a>
+                </td>
 
-        </tr>
+            </tr>
 
-        {% endfor %}
+            {% endfor %}
 
-    </tbody>
+        </tbody>
 </div>
 
-    {% endblock %}
+{% endblock %}

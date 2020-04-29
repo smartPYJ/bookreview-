@@ -8,38 +8,50 @@ Register
 
 {% block body %}
 
-<h1>Register to create account  </h1>
+<h1>Register to create account </h1>
 
 <form action="{{ url_for('registeruser') }}" method="post">
 
+    <div class="form-row text-centre">
+        <div class="form-group col-md-4">
+            <label for="inputEmail4">Username</label>
+            <input type="text" class="form-control" name="username" placeholder="username" required>
+        </div>
+        <div class="form-group col-md-4">
+            <label for="inputPassword4">Password</label>
+            <input type="password" class="form-control" name="password" placeholder="Password" required >
+        </div>
+    </div>
+    <div class="form-row">
+        <div class="form-group col-md-4">
+            <label for="inputAddress">Firstname</label>
+            <input type="text" class="form-control" name="firstname" placeholder="Firstname">
+        </div>
+        <div class="form-group col-md-4">
+            <label for="inputAddress2">lastname</label>
+            <input type="text" class="form-control" name="lastname" placeholder="Lastname">
+        </div>
+    </div>
+    <div class="form-row">
+        <div class="form-group col-md-4">
+            <label for="inputCity">Email</label>
+            <input type="email" class="form-control" name="email" required>
+        </div>
 
+        <div class="form-group col-md-4">
+            <label for="inputZip">country</label>
+            <input type="text" class="form-control" name="country">
+        </div>
 
-    <div class="form-group">
-        <input class="form-control" name="firstname" placeholder="First Name">
-    </div>
-    <div class="form-group">
-        <input class="form-control" name="lastname" placeholder="Last Name">
-    </div>
-
-    <div class="form-group">
-        <input class="form-control" name="username" placeholder="User Name">
-    </div>
-    <div class="form-group">
-        <input type="email" class="form-control" name="email" placeholder="Email">
-    </div>
-    <div class="form-group">
-        <input class="form-control" name="country" placeholder="Country">
-    </div>
-    <div class="form-group">
-        <input type="password" class="form-control" name="password" placeholder="Password">
-    </div>
-
-    <div class="form-group">
-        <button class="btn btn-primary">Register</button>
     </div>
     <h6>Already have an Account ?
-    <span >
-        <a href="{{url_for('login')}}"> Login </a>
-    </span></h6>
+        <span>
+            <a href="{{url_for('index')}}"> Login </a>
+        </span></h6>
+
+
+    <button type="submit" class="btn btn-primary">Sign up</button>
 </form>
+
+
 {% endblock %}
